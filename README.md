@@ -23,4 +23,4 @@ Cada pasta na raiz será um jogo independente.
 
 | # | Jogo | Status |
 |---|------|--------|
-| 01 | Ping Pong | 🔜 Em breve |
+| 01 | Ping Pong | Feito |
