@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://dan30lxxsk0do"]
+
+[node name="GameName" type="RichTextLabel" unique_id=1216531690]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -341.75
+offset_right = 401.0
+offset_bottom = 178.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.5529556, 0.55295557, 0.55295557, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 33
+theme_override_font_sizes/normal_font_size = 120
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+text = "[wave amp=30.0 freq=5.0 connected=1]Pongo[/wave]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 2

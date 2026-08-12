@@ -1,0 +1,40 @@
+[gd_resource type="Theme" format=3 uid="uid://cs3pk8w05vvhv"]
+
+[ext_resource type="StyleBox" uid="uid://c0f34qmff3vvc" path="res://resources/button-hover.tres" id="1_886mr"]
+[ext_resource type="StyleBox" uid="uid://dakeuhl06c03t" path="res://resources/button-pressed.tres" id="2_b751m"]
+[ext_resource type="StyleBox" uid="uid://dlcnua3lqi66r" path="res://resources/button-normal.tres" id="3_owntx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_311cg"]
+bg_color = Color(1, 1, 1, 0.6392157)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_886mr"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_color = Color(1, 1, 1, 0.6)
+
+[resource]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 35
+Button/styles/focus = ExtResource("1_886mr")
+Button/styles/hover = ExtResource("1_886mr")
+Button/styles/hover_mirrored = ExtResource("1_886mr")
+Button/styles/hover_pressed = ExtResource("2_b751m")
+Button/styles/hover_pressed_mirrored = ExtResource("2_b751m")
+Button/styles/normal = ExtResource("3_owntx")
+Button/styles/normal_mirrored = ExtResource("3_owntx")
+Button/styles/pressed = ExtResource("2_b751m")
+Button/styles/pressed_mirrored = ExtResource("2_b751m")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_311cg")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_886mr")
+Label/font_sizes/font_size = 30

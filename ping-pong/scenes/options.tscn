@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://bbvew0f8ybpjk"]
+
+[ext_resource type="Theme" uid="uid://cs3pk8w05vvhv" path="res://resources/theme.tres" id="1_c2u1v"]
+[ext_resource type="Script" uid="uid://b6jbo08ipqyje" path="res://scripts/options.gd" id="1_yjkok"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ytvr"]
+bg_color = Color(0, 0, 0, 0.94509804)
+
+[node name="Options" type="Panel" unique_id=728585451]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.5
+offset_top = -157.0
+offset_right = 173.5
+offset_bottom = 157.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ytvr")
+script = ExtResource("1_yjkok")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=993182835]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 7.0
+offset_right = -9.5
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1010846477]
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_c2u1v")
+text = "Options"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=524477991]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=1007325542]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_c2u1v")
+text = "Master"
+vertical_alignment = 1
+
+[node name="MasterSlide" type="HSlider" parent="VBoxContainer/HBoxContainer" unique_id=1599705471]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_c2u1v")
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=504298203]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1931345176]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_c2u1v")
+text = "SFX"
+vertical_alignment = 1
+
+[node name="SFXSlide" type="HSlider" parent="VBoxContainer/HBoxContainer2" unique_id=1028686830]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_c2u1v")
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer" unique_id=392334812]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=815582]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_c2u1v")
+text = "Music"
+vertical_alignment = 1
+
+[node name="MusicSlide" type="HSlider" parent="VBoxContainer/HBoxContainer3" unique_id=930383920]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("1_c2u1v")
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer" unique_id=819348185]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4" unique_id=1951392009]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_c2u1v")
+text = "Fullscreen"
+vertical_alignment = 1
+
+[node name="FullscreenButton" type="CheckButton" parent="VBoxContainer/HBoxContainer4" unique_id=1835531682]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_c2u1v")
+flat = true
+
+[node name="BackToPrincipal" type="Button" parent="VBoxContainer" unique_id=921553023]
+layout_mode = 2
+theme = ExtResource("1_c2u1v")
+text = "Close"
+
+[node name="BackToMenu" type="Button" parent="VBoxContainer" unique_id=1931100883]
+layout_mode = 2
+theme = ExtResource("1_c2u1v")
+text = "Back to Menu"
+
+[connection signal="draw" from="." to="." method="_on_draw"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/MasterSlide" to="." method="_on_master_slide_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/SFXSlide" to="." method="_on_sfx_slide_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer3/MusicSlide" to="." method="_on_music_slide_value_changed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer4/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="pressed" from="VBoxContainer/BackToPrincipal" to="." method="_on_back_to_principal_pressed"]
+[connection signal="pressed" from="VBoxContainer/BackToMenu" to="." method="_on_back_to_menu_pressed"]

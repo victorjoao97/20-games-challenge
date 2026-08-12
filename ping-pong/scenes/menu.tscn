@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://r10kvyukr1i1"]
+
+[ext_resource type="Script" uid="uid://cjtljorgeyhdg" path="res://scripts/menu.gd" id="1_con2f"]
+[ext_resource type="PackedScene" uid="uid://dan30lxxsk0do" path="res://scenes/game-name.tscn" id="2_4ytvr"]
+[ext_resource type="Theme" uid="uid://cs3pk8w05vvhv" path="res://resources/theme.tres" id="2_con2f"]
+[ext_resource type="PackedScene" uid="uid://dfiy1evovq0ut" path="res://scenes/contact_button.tscn" id="4_mhnvy"]
+[ext_resource type="PackedScene" uid="uid://bbvew0f8ybpjk" path="res://scenes/options.tscn" id="5_4ytvr"]
+
+[node name="PrincipalMenu" type="Control" unique_id=1636052066]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_con2f")
+
+[node name="Principal" type="Panel" parent="." unique_id=878636984]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Principal" unique_id=1323030236]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -125.0
+offset_right = 125.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="OnePlayer" type="Button" parent="Principal/VBoxContainer" unique_id=1792529077]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../TwoPlayers")
+focus_next = NodePath("../TwoPlayers")
+theme = ExtResource("2_con2f")
+text = "1 Player"
+
+[node name="TwoPlayers" type="Button" parent="Principal/VBoxContainer" unique_id=556800720]
+layout_mode = 2
+focus_neighbor_top = NodePath("../OnePlayer")
+focus_previous = NodePath("../OnePlayer")
+theme = ExtResource("2_con2f")
+text = "2 Players"
+
+[node name="Options" type="Button" parent="Principal/VBoxContainer" unique_id=824940786]
+layout_mode = 2
+focus_neighbor_top = NodePath("../OnePlayer")
+focus_previous = NodePath("../OnePlayer")
+theme = ExtResource("2_con2f")
+text = "Options"
+
+[node name="Quit" type="Button" parent="Principal/VBoxContainer" unique_id=536484395]
+layout_mode = 2
+focus_neighbor_top = NodePath("../OnePlayer")
+focus_previous = NodePath("../OnePlayer")
+theme = ExtResource("2_con2f")
+text = "Quit"
+
+[node name="GameName" parent="Principal" unique_id=1539765987 instance=ExtResource("2_4ytvr")]
+layout_mode = 1
+offset_left = -350.0
+offset_right = 350.0
+offset_bottom = 170.0
+
+[node name="ContactButton" parent="Principal" unique_id=89128862 instance=ExtResource("4_mhnvy")]
+layout_mode = 1
+
+[node name="Options" parent="." unique_id=728585451 instance=ExtResource("5_4ytvr")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Principal/VBoxContainer/OnePlayer" to="." method="_on_one_player_pressed"]
+[connection signal="pressed" from="Principal/VBoxContainer/TwoPlayers" to="." method="_on_one_player_2_pressed"]
+[connection signal="pressed" from="Principal/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Principal/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

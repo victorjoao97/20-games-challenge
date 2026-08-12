@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://ded41c56nluqo"]
+
+[ext_resource type="Script" uid="uid://c6lgo6bisdo6r" path="res://scripts/menu_modes.gd" id="1_4big8"]
+[ext_resource type="PackedScene" uid="uid://dfiy1evovq0ut" path="res://scenes/contact_button.tscn" id="4_4big8"]
+[ext_resource type="PackedScene" uid="uid://dan30lxxsk0do" path="res://scenes/game-name.tscn" id="5_1x7b4"]
+[ext_resource type="Theme" uid="uid://cs3pk8w05vvhv" path="res://resources/theme.tres" id="5_m0a0m"]
+
+[node name="ModesMenu" type="Panel" unique_id=1825022183]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4big8")
+
+[node name="Back" type="Button" parent="." unique_id=106221639]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -52.5
+offset_top = -47.0
+offset_right = 52.5
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_bottom = NodePath("../VBoxContainer/InfiniteMode")
+focus_next = NodePath("../VBoxContainer/InfiniteMode")
+theme = ExtResource("5_m0a0m")
+text = "Back"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1950042729]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -125.0
+offset_right = 125.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=1552634541]
+layout_mode = 2
+theme = ExtResource("5_m0a0m")
+text = "Choose your mode
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelMode" type="Button" parent="VBoxContainer" unique_id=1885277877]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../InfiniteMode")
+focus_next = NodePath("../InfiniteMode")
+theme = ExtResource("5_m0a0m")
+text = "Levels"
+
+[node name="InfiniteMode" type="Button" parent="VBoxContainer" unique_id=1255647255]
+layout_mode = 2
+focus_neighbor_top = NodePath("../LevelMode")
+focus_previous = NodePath("../LevelMode")
+theme = ExtResource("5_m0a0m")
+text = "Infinite"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1293879790]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 153.0
+offset_top = -5.0
+offset_right = 589.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="LevelLabel" type="Label" parent="VBoxContainer2" unique_id=2014936061]
+layout_mode = 2
+theme = ExtResource("5_m0a0m")
+text = "10 levels - Goal is 3 points"
+vertical_alignment = 1
+
+[node name="InfiniteLabel" type="Label" parent="VBoxContainer2" unique_id=946610854]
+layout_mode = 2
+theme = ExtResource("5_m0a0m")
+text = "make points as you can"
+vertical_alignment = 1
+
+[node name="GameName" parent="." unique_id=1539765987 instance=ExtResource("5_1x7b4")]
+layout_mode = 1
+offset_left = -350.0
+offset_right = 350.0
+offset_bottom = 170.0
+
+[node name="ContactButton" parent="." unique_id=89128862 instance=ExtResource("4_4big8")]
+layout_mode = 1
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/LevelMode" to="." method="_on_level_mode_pressed"]
+[connection signal="pressed" from="VBoxContainer/InfiniteMode" to="." method="_on_infinite_mode_pressed"]

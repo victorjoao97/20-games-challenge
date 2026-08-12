@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://dj0o4e2tsdl8h"]
+
+[ext_resource type="Script" uid="uid://ihjkxtbt50ef" path="res://scripts/credits.gd" id="1_2ckv8"]
+[ext_resource type="AudioStream" uid="uid://ppjn8y5gnv0s" path="res://assets/audio/349676__foolboymedia__peaceful-break.wav" id="2_2ckv8"]
+
+[node name="Credits" type="Control" unique_id=1636052066]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ckv8")
+
+[node name="Principal" type="Panel" parent="." unique_id=878636984]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Principal" unique_id=1799139924]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -413.0
+offset_top = -268.5
+offset_right = 413.0
+offset_bottom = 359.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Principal/ScrollContainer" unique_id=1571978519]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[center]
+
+[font_size=42][b]CREDITS[/b][/font_size]
+
+[font_size=30][b]PING PONG[/b][/font_size]
+
+[font_size=20]A game by [b]HyperRuim Games[/b][/font_size]
+
+
+[font_size=26][b]DEVELOPMENT[/b][/font_size]
+
+[font_size=20]
+Game Design
+Programming
+Art
+UI
+Sound & Music
+
+[b]HyperRuim Games[/b]
+[/font_size]
+
+
+[font_size=26][b]ABOUT THE GAME[/b][/font_size]
+
+[font_size=20]
+This game was made from scratch as part of my
+[b]20 Games Challenge[/b].
+
+It is the first game I made for the challenge,
+and my first step toward making 20 games.
+[/font_size]
+
+
+[font_size=26][b]THE CHALLENGE[/b][/font_size]
+
+[font_size=36][b]01 / 20[/b][/font_size]
+
+[font_size=20]
+One game down.
+Nineteen to go.
+[/font_size]
+
+
+[font_size=26][b]SPECIAL THANKS[/b][/font_size]
+
+[font_size=20]
+To everyone who plays, gives feedback,
+and supports the journey.
+[/font_size]
+
+
+[font_size=26][b]FINAL THOUGHT[/b][/font_size]
+
+[font_size=20]
+This game may be simple,
+but every game has to start somewhere.
+
+[b]Thanks for playing.[/b]
+[/font_size]
+
+
+[font_size=30][b]20 GAMES CHALLENGE[/b][/font_size]
+
+[font_size=26][b]01 — PING PONG[/b][/font_size]
+
+[font_size=22][b]NEXT GAME → FLAPPY BIRD[/b][/font_size]
+
+[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="Label" type="Label" parent="Principal" unique_id=1001301010]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.0
+offset_top = -325.0
+offset_right = 289.0
+offset_bottom = -287.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 35
+text = "Thanks for playing this game !!!!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=153767556]
+stream = ExtResource("2_2ckv8")
+autoplay = true
+bus = &"Music"

@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://cv5of3rp7574"]
+
+[ext_resource type="Script" uid="uid://bh37lmewdujnm" path="res://scripts/main.gd" id="1_tefeu"]
+[ext_resource type="PackedScene" uid="uid://bn0dw4n0d8r8o" path="res://scenes/hud_game.tscn" id="2_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://vpt24wmjuk4a" path="res://scenes/player.tscn" id="2_sugp2"]
+[ext_resource type="Script" uid="uid://dabgw60u8gayc" path="res://scripts/right_wall.gd" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://bo6xxo0dv8lr5" path="res://scenes/ball.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bbvew0f8ybpjk" path="res://scenes/options.tscn" id="3_ya4ey"]
+[ext_resource type="Script" uid="uid://ba1imcar7xtto" path="res://scripts/left_wall.gd" id="4_tbgi4"]
+[ext_resource type="AudioStream" uid="uid://rqoklqiqit2i" path="res://assets/audio/impactGeneric_light_001.ogg" id="7_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://qoni0620bgqn" path="res://assets/audio/345299__scrampunk__okay.wav" id="8_tipki"]
+[ext_resource type="AudioStream" uid="uid://b5xjedui2swyg" path="res://resources/background_music.tres" id="9_choun"]
+[ext_resource type="AudioStream" uid="uid://bchhjpeyvh45o" path="res://assets/audio/impactPunch_heavy_002.ogg" id="10_choun"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jyhfs"]
+absorbent = true
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1xwnf"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0wfyh"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sugp2"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jyhfs"]
+normal = Vector2(-1, 0)
+
+[node name="Main" type="Node2D" unique_id=1024974511]
+script = ExtResource("1_tefeu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1639618140]
+
+[node name="HudGame" parent="CanvasLayer" unique_id=243700085 instance=ExtResource("2_o6xl0")]
+
+[node name="Options" parent="CanvasLayer/HudGame" unique_id=728585451 instance=ExtResource("3_ya4ey")]
+visible = false
+layout_mode = 1
+
+[node name="Player1" parent="." unique_id=404249234 instance=ExtResource("2_sugp2")]
+position = Vector2(30, 360)
+player_number = 1
+
+[node name="Player2" parent="." unique_id=215645859 instance=ExtResource("2_sugp2")]
+position = Vector2(1250, 360)
+playable = false
+player_number = 2
+follow_speed = 10.0
+error_interval = 5.0
+
+[node name="WallsTopDown" type="StaticBody2D" parent="." unique_id=227067896]
+collision_mask = 6
+physics_material_override = SubResource("PhysicsMaterial_jyhfs")
+
+[node name="Top" type="CollisionShape2D" parent="WallsTopDown" unique_id=1069850809]
+position = Vector2(0, 2)
+shape = SubResource("WorldBoundaryShape2D_1xwnf")
+one_way_collision = true
+one_way_collision_direction = Vector2(0, -1)
+
+[node name="Bottom" type="CollisionShape2D" parent="WallsTopDown" unique_id=1066523627]
+position = Vector2(270, 721)
+shape = SubResource("WorldBoundaryShape2D_0wfyh")
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=1941631471]
+collision_mask = 6
+physics_material_override = SubResource("PhysicsMaterial_jyhfs")
+script = ExtResource("4_tbgi4")
+
+[node name="Esquerda" type="CollisionShape2D" parent="LeftWall" unique_id=291512486]
+position = Vector2(-5, 141)
+shape = SubResource("WorldBoundaryShape2D_sugp2")
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=1919544451]
+collision_mask = 6
+physics_material_override = SubResource("PhysicsMaterial_jyhfs")
+script = ExtResource("3_jyhfs")
+
+[node name="Direita" type="CollisionShape2D" parent="RightWall" unique_id=2134312283]
+position = Vector2(1285, 150)
+shape = SubResource("WorldBoundaryShape2D_jyhfs")
+
+[node name="Ball" parent="." unique_id=1275155461 instance=ExtResource("3_sugp2")]
+position = Vector2(640, 16)
+
+[node name="SFXTopDown" type="AudioStreamPlayer2D" parent="." unique_id=1907347403]
+stream = ExtResource("7_o6xl0")
+bus = &"SFX"
+
+[node name="SFXPoints" type="AudioStreamPlayer2D" parent="." unique_id=938933599]
+stream = ExtResource("8_tipki")
+bus = &"SFX"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=29829788]
+stream = ExtResource("9_choun")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"
+
+[node name="SFXPlayer" type="AudioStreamPlayer2D" parent="." unique_id=602525696]
+stream = ExtResource("10_choun")
+pitch_scale = 0.7
+bus = &"SFX"

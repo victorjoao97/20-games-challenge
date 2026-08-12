@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dfiy1evovq0ut"]
+
+[ext_resource type="Theme" uid="uid://cs3pk8w05vvhv" path="res://resources/theme.tres" id="1_j6mxg"]
+
+[node name="ContactButton" type="LinkButton" unique_id=89128862]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -22.0
+offset_right = 249.0
+grow_vertical = 0
+theme = ExtResource("1_j6mxg")
+text = "    Made by @hyperruim_games"
+uri = "https://www.instagram.com/hyperruim_games/"

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dojab536751ki"]
+
+[ext_resource type="AudioStream" uid="uid://7c6glbhonbgf" path="res://resources/menu_music.tres" id="1_ydaxe"]
+
+[node name="MenuMusic" type="AudioStreamPlayer" unique_id=267714]
+stream = ExtResource("1_ydaxe")
+volume_db = -12.0
+autoplay = true
+bus = &"Music"

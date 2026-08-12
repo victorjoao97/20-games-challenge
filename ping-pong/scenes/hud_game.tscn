@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bn0dw4n0d8r8o"]
+
+[ext_resource type="Script" uid="uid://cxo55cyrnai85" path="res://scripts/hud_game.gd" id="1_navw8"]
+[ext_resource type="Texture2D" uid="uid://bv3cxfchq6e0m" path="res://assets/pointed-line.png" id="2_1lko2"]
+
+[node name="HudGame" type="Control" unique_id=243700085]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_navw8")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1477225925]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 50.0
+offset_bottom = 83.0
+grow_horizontal = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="ScorePlayer1" type="Label" parent="HBoxContainer" unique_id=1777992403]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScorePlayer2" type="Label" parent="HBoxContainer" unique_id=2020109106]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NivelLabel" type="Label" parent="." unique_id=1515803267]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1035.0
+offset_top = 50.0
+offset_right = -893.0
+offset_bottom = 93.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1576112413]
+visible = false
+position = Vector2(-120.02417, 4.7434893)
+scale = Vector2(2.50008, 2.3717449)
+points = PackedVector2Array(300, -2, 300, 301.58)
+width = 2.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1917687282]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_right = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_1lko2")
+stretch_mode = 1
