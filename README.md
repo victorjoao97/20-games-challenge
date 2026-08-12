@@ -24,5 +24,3 @@ Cada pasta na raiz será um jogo independente.
 | # | Jogo | Status |
 |---|------|--------|
 | 01 | Ping Pong | 🔜 Em breve |
-
-> Em breve faço o push da pasta **`ping-pong`**, que é o primeiro jogo do desafio.
