@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dj0o4e2tsdl8h"]
 
 [ext_resource type="Script" uid="uid://ihjkxtbt50ef" path="res://scripts/credits.gd" id="1_2ckv8"]
+[ext_resource type="Theme" uid="uid://cs3pk8w05vvhv" path="res://resources/theme.tres" id="2_0ctdu"]
 [ext_resource type="AudioStream" uid="uid://ppjn8y5gnv0s" path="res://assets/audio/349676__foolboymedia__peaceful-break.wav" id="2_2ckv8"]
 
 [node name="Credits" type="Control" unique_id=1636052066]
@@ -77,10 +78,9 @@ text = "
 
 [font_size=42][b]CREDITS[/b][/font_size]
 
-[font_size=30][b]PING PONG[/b][/font_size]
+[font_size=30][b]PONGO[/b][/font_size]
 
 [font_size=20]A game by [b]HyperRuim Games[/b][/font_size]
-
 
 [font_size=26][b]DEVELOPMENT[/b][/font_size]
 
@@ -94,7 +94,6 @@ Sound & Music
 [b]HyperRuim Games[/b]
 [/font_size]
 
-
 [font_size=26][b]ABOUT THE GAME[/b][/font_size]
 
 [font_size=20]
@@ -105,7 +104,6 @@ It is the first game I made for the challenge,
 and my first step toward making 20 games.
 [/font_size]
 
-
 [font_size=26][b]THE CHALLENGE[/b][/font_size]
 
 [font_size=36][b]01 / 20[/b][/font_size]
@@ -115,7 +113,6 @@ One game down.
 Nineteen to go.
 [/font_size]
 
-
 [font_size=26][b]SPECIAL THANKS[/b][/font_size]
 
 [font_size=20]
@@ -123,6 +120,21 @@ To everyone who plays, gives feedback,
 and supports the journey.
 [/font_size]
 
+[font_size=26][b]AUDIO CREDITS[/b][/font_size]
+
+[font_size=20]
+Gameplay Music
+[b]Arcade Music Loop[/b] — joshuaempyre
+
+Credits Music
+[b]Peaceful Break[/b] — FoolBoyMedia
+
+Menu Music
+[b]mario's way[/b] — xsgianni
+
+SFX
+[b]Impact Sounds[/b] — Kenney
+[/font_size]
 
 [font_size=26][b]FINAL THOUGHT[/b][/font_size]
 
@@ -132,7 +144,6 @@ but every game has to start somewhere.
 
 [b]Thanks for playing.[/b]
 [/font_size]
-
 
 [font_size=30][b]20 GAMES CHALLENGE[/b][/font_size]
 
@@ -160,7 +171,22 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 35
 text = "Thanks for playing this game !!!!"
 
+[node name="Close" type="Button" parent="Principal" unique_id=817297182]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -68.0
+offset_right = 190.0
+offset_bottom = -30.0
+grow_vertical = 0
+theme = ExtResource("2_0ctdu")
+text = "Close"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=153767556]
 stream = ExtResource("2_2ckv8")
-autoplay = true
 bus = &"Music"
+
+[connection signal="pressed" from="Principal/Close" to="." method="_on_close_pressed"]

@@ -36,6 +36,10 @@ script = ExtResource("1_tefeu")
 [node name="Options" parent="CanvasLayer/HudGame" unique_id=728585451 instance=ExtResource("3_ya4ey")]
 visible = false
 layout_mode = 1
+offset_left = -173.5
+offset_top = -157.0
+offset_right = 173.5
+offset_bottom = 157.0
 
 [node name="Player1" parent="." unique_id=404249234 instance=ExtResource("2_sugp2")]
 position = Vector2(30, 360)

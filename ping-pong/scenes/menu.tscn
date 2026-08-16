@@ -79,6 +79,10 @@ layout_mode = 1
 [node name="Options" parent="." unique_id=728585451 instance=ExtResource("5_4ytvr")]
 visible = false
 layout_mode = 1
+offset_left = -173.5
+offset_top = -157.0
+offset_right = 173.5
+offset_bottom = 157.0
 
 [connection signal="pressed" from="Principal/VBoxContainer/OnePlayer" to="." method="_on_one_player_pressed"]
 [connection signal="pressed" from="Principal/VBoxContainer/TwoPlayers" to="." method="_on_one_player_2_pressed"]
