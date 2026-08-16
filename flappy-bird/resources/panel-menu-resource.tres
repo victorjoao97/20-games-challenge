@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://dp7agyw00nss0"]
+
+[ext_resource type="Texture2D" uid="uid://ckwegnv16u7hg" path="res://assets/Interface windows.png" id="1_m58q3"]
+
+[resource]
+texture = ExtResource("1_m58q3")
+texture_margin_left = 23.181698
+texture_margin_top = 22.546717
+texture_margin_right = 21.032835
+texture_margin_bottom = 23.637913
+region_rect = Rect2(1339, 734, 241, 227)

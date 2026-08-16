@@ -1,30 +1,93 @@
 [gd_scene format=3 uid="uid://dlj7j2vkfwcu4"]
 
 [ext_resource type="Script" uid="uid://cwkq6ave8bqtj" path="res://scripts/pipe.gd" id="1_8x3ej"]
-
-[sub_resource type="Gradient" id="Gradient_8x3ej"]
-offsets = PackedFloat32Array(0.07840237, 0.27366865)
-colors = PackedColorArray(1, 1, 1, 1, 0.22312239, 0.71574646, 0.12288649, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_1xwnf"]
-gradient = SubResource("Gradient_8x3ej")
-width = 45
+[ext_resource type="Texture2D" uid="uid://c4nb5a26h6dqw" path="res://assets/Hammer.png" id="2_arpqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
-size = Vector2(45.2, 360)
+size = Vector2(33, 236)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arpqm"]
+size = Vector2(51, 124.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arpqm"]
+atlas = ExtResource("2_arpqm")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8p0di"]
+atlas = ExtResource("2_arpqm")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejsh2"]
+atlas = ExtResource("2_arpqm")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ybk5"]
+atlas = ExtResource("2_arpqm")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdldm"]
+atlas = ExtResource("2_arpqm")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1xwnf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arpqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8p0di")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejsh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ybk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tdldm")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Pipe" type="Area2D" unique_id=126351892]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_8x3ej")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1956814539]
-position = Vector2(0, 1.0000076)
-scale = Vector2(1, 360)
-texture = SubResource("GradientTexture1D_1xwnf")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=644504032]
-visible = false
+position = Vector2(0, -61)
 shape = SubResource("RectangleShape2D_iywne")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=872591966]
+position = Vector2(-9.536743e-07, 119.25)
+shape = SubResource("RectangleShape2D_arpqm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1956814539]
+visible = false
+modulate = Color(0.6130312, 0.6397457, 0.99374205, 1)
+position = Vector2(1.9073486e-06, -63.999996)
+scale = Vector2(2.5725806, 5.6250005)
+texture = ExtResource("2_arpqm")
+region_enabled = true
+region_rect = Rect2(102.57257, 0, 19.004135, 41.04141)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=823792850]
+visible = false
+modulate = Color(0.6130312, 0.6397457, 0.99374205, 1)
+position = Vector2(0, 118.424706)
+scale = Vector2(1.9314517, 6.230925)
+texture = ExtResource("2_arpqm")
+region_enabled = true
+region_rect = Rect2(96.172, 40.91865, 31.8609, 21.57803)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=853017321]
+scale = Vector2(1.6718749, 5.656249)
+sprite_frames = SubResource("SpriteFrames_1xwnf")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

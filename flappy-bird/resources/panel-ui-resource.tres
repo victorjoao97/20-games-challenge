@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://dfximincvymt4"]
+
+[ext_resource type="Texture2D" uid="uid://epu4485lsfnw" path="res://assets/FrameMap.png" id="1_tmgbf"]
+
+[resource]
+texture = ExtResource("1_tmgbf")
+texture_margin_left = 8.510388
+texture_margin_top = 19.3858
+texture_margin_right = 7.494362
+texture_margin_bottom = 17.883492
+region_rect = Rect2(32.534763, 131.56746, 94.65642, 24.986893)

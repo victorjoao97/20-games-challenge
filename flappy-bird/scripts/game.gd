@@ -3,16 +3,16 @@ extends Node2D
 @onready var player: Player = %Player
 @onready var camera_2d: Camera2D = %Camera2D
 @onready var record_label: Label = %RecordLabel
-@onready var center_line_debug: Line2D = %CenterLineDebug
 @onready var enter_to_start: Label = %EnterToStart
 @onready var parallax_backgrounds: Node2D = %Parallaxes
-@onready var ended_panel: Panel = $CanvasLayer/Control/EndedPanel
+@onready var ended_panel: PanelContainer = $CanvasLayer/Control/EndedPanel
 @onready var ended_record_label: Label = %EndedRecordLabel
 @onready var reload_button: Button = %ReloadButton
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 @onready var ended_last_record_label: Label = %EndedLastRecordLabel
 @onready var background_music: AudioStreamPlayer = %BackgroundMusic
 @onready var mute_button: Button = %MuteButton
+@onready var key_m_to_mute: Label = %KeyMToMute
 
 @export var debug := false
 @export var disable_camera := false
@@ -24,7 +24,7 @@ extends Node2D
 const pipe: PackedScene = preload("uid://d3uac7wjorfa8")
 var last_pipe_x: float
 var record := 0
-var gap_between := -1.0
+var gap_between := 0.0
 var game_started := false
 
 var player_scored_stream = preload("uid://dnfmvatensikc")
@@ -65,7 +65,6 @@ func create_first_pipes(number: int) -> void:
 
 func handle_debug() -> void:
 	player.debug = debug
-	center_line_debug.visible = debug
 	reload_button.visible = debug
 
 func change_score_label() -> void:
@@ -138,12 +137,17 @@ func start_game() -> void:
 	mute_button.release_focus()
 
 func _unhandled_key_input(event: InputEvent) -> void:
-	if event.is_action_pressed("jump"):
+	if event.is_action_pressed("jump") and !game_started:
 		start_game()
 		return
 
 	if event.is_action_pressed("ui_cancel"):
 		call_deferred("quit")
+		return
+	
+	if event.is_action_pressed("mute"):
+		mute()
+		return
 
 func quit():
 	get_tree().quit()
@@ -162,6 +166,18 @@ func _on_mute_button_pressed() -> void:
 		volume = 0
 	else:
 		mute_button.text = "Mute"
+		volume = 1
+	
+	AudioServer.set_bus_volume_linear(audio_bus, volume)
+
+func mute() -> void:
+	var audio_bus := AudioServer.get_bus_index("Master")
+	var volume := 1
+	if key_m_to_mute.text == "Press M to mute":
+		key_m_to_mute.text = "Press M to unmute"
+		volume = 0
+	else:
+		key_m_to_mute.text = "Press M to mute"
 		volume = 1
 
 	AudioServer.set_bus_volume_linear(audio_bus, volume)

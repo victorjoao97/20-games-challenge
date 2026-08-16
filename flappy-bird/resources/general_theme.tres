@@ -1,0 +1,31 @@
+[gd_resource type="Theme" format=3 uid="uid://cwt3q2aed1bly"]
+
+[ext_resource type="Texture2D" uid="uid://hssp6olnquyk" path="res://assets/6 Buttons/Button_04.png" id="1_8x8ui"]
+[ext_resource type="Texture2D" uid="uid://c63ap1koyet2e" path="res://assets/6 Buttons/Button_08.png" id="1_sryeb"]
+[ext_resource type="Texture2D" uid="uid://box1dadkgegwn" path="res://assets/6 Buttons/Button_24.png" id="2_sryeb"]
+[ext_resource type="StyleBox" uid="uid://dfximincvymt4" path="res://resources/panel-ui-resource.tres" id="4_4ngl5"]
+[ext_resource type="StyleBox" uid="uid://dp7agyw00nss0" path="res://resources/panel-menu-resource.tres" id="5_y83st"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0tnpc"]
+texture = ExtResource("1_sryeb")
+texture_margin_left = 10.0
+texture_margin_right = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jgwjt"]
+texture = ExtResource("1_8x8ui")
+texture_margin_left = 10.0
+texture_margin_right = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tc1gp"]
+texture = ExtResource("2_sryeb")
+texture_margin_left = 10.0
+texture_margin_right = 10.0
+
+[resource]
+default_font_size = 15
+Button/styles/hover = SubResource("StyleBoxTexture_0tnpc")
+Button/styles/normal = SubResource("StyleBoxTexture_jgwjt")
+Button/styles/pressed = SubResource("StyleBoxTexture_tc1gp")
+Menu/base_type = &"PanelContainer"
+Menu/styles/panel = ExtResource("5_y83st")
+PanelContainer/styles/panel = ExtResource("4_4ngl5")

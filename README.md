@@ -15,7 +15,8 @@ Cada pasta na raiz será um jogo independente.
 
 ```text
 /
-├─ ping-pong/   # Jogo 01 (em breve)
+├─ ping-pong/   # Jogo 01
+├─ flappy-bird/   # Jogo 02
 ├─ ...          # Próximos jogos
 ```
 
@@ -24,3 +25,4 @@ Cada pasta na raiz será um jogo independente.
 | # | Jogo | Status |
 |---|------|--------|
 | 01 | Ping Pong | Feito |
+| 02 | Flappy Bird | Feito |

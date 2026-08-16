@@ -15,6 +15,7 @@ unique_name_in_owner = true
 
 [node name="Pipe2" parent="." unique_id=1169966620 instance=ExtResource("1_f17p0")]
 unique_name_in_owner = true
+rotation = 3.1415927
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=682016820]
 position = Vector2(2, -1)
