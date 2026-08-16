@@ -95,6 +95,9 @@ func play_player_damage() -> void:
 	audio_stream_player.play()
 
 func _on_player_damage() -> void:
+	var tween := create_tween()
+	tween.tween_property(camera_2d, "position:x", 0.0, 0.3)
+
 	play_player_damage()
 	ended_last_record_label.text = str(GameState.last_score)
 	if record > GameState.last_score:
