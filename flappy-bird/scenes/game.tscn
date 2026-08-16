@@ -1,0 +1,213 @@
+[gd_scene format=3 uid="uid://bbkwi8g1lv4g5"]
+
+[ext_resource type="Script" uid="uid://dr12n7s0ip2vg" path="res://scripts/game.gd" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://b8nimb5anw8sy" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://bju67k6d6wico" path="res://assets/cyberpunk-street-files/Assets/city skyline/Layers/front.png" id="2_iywne"]
+[ext_resource type="Texture2D" uid="uid://bawtc0s8l8ahn" path="res://assets/cyberpunk-street-files/Assets/city skyline/Layers/back.png" id="2_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://d3mxrm1egnqx0" path="res://assets/cyberpunk-street-files/Assets/city skyline/Layers/buildings.png" id="3_gee14"]
+[ext_resource type="Theme" uid="uid://7pba03hru2pb" path="res://resources/theme.tres" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://bkiw27bj8lqls" path="res://scenes/ground.tscn" id="3_lnu2h"]
+[ext_resource type="AudioStream" uid="uid://b8n05603s1irl" path="res://assets/audios/cyberpunk-street.ogg" id="8_gee14"]
+
+[node name="Game" type="Node2D" unique_id=153097584]
+script = ExtResource("1_lbhrr")
+started_from_x = 400
+
+[node name="Parallaxes" type="Node2D" parent="." unique_id=928495508]
+unique_name_in_owner = true
+
+[node name="Layer0" type="Parallax2D" parent="Parallaxes" unique_id=1097019055]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallaxes/Layer0" unique_id=1347255181]
+scale = Vector2(2.2256944, 1.8749999)
+texture = ExtResource("2_u5sy4")
+centered = false
+
+[node name="Layer1" type="Parallax2D" parent="Parallaxes" unique_id=1264025043]
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallaxes/Layer1" unique_id=150017556]
+scale = Vector2(2.2256944, 1.8749999)
+texture = ExtResource("3_gee14")
+centered = false
+
+[node name="Layer2" type="Parallax2D" parent="Parallaxes" unique_id=1182567256]
+repeat_size = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallaxes/Layer2" unique_id=132328198]
+scale = Vector2(2.2256944, 1.8749999)
+texture = ExtResource("2_iywne")
+centered = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2016421707]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1207358775]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MuteButton" type="Button" parent="CanvasLayer/Control" unique_id=352427628]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 540.0
+offset_top = -355.0
+offset_right = 631.0
+offset_bottom = -324.0
+grow_vertical = 0
+text = "Mute"
+
+[node name="ReloadButton" type="Button" parent="CanvasLayer/Control" unique_id=469522036]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -33.0
+offset_right = 64.0
+offset_bottom = -2.0
+grow_vertical = 0
+text = "Reload"
+
+[node name="RecordLabel" type="Label" parent="CanvasLayer/Control" unique_id=551068639]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 73.0
+offset_bottom = 29.0
+text = "Record: 0"
+
+[node name="CenterLineDebug" type="Line2D" parent="CanvasLayer/Control" unique_id=626274430]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 180, 1280, 180)
+width = 3.0
+
+[node name="EnterToStart" type="Label" parent="CanvasLayer/Control" unique_id=518506049]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -78.5
+offset_top = -65.0
+offset_right = 78.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_iywne")
+text = "Press ENTER to start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndedPanel" type="Panel" parent="CanvasLayer/Control" unique_id=1405137417]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.82013
+offset_top = -97.5
+offset_right = 127.82013
+offset_bottom = 97.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/EndedPanel" unique_id=233307809]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_right = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/EndedPanel/VBoxContainer" unique_id=1021537341]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/EndedPanel/VBoxContainer/HBoxContainer" unique_id=160899608]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/EndedPanel/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1967963799]
+layout_mode = 2
+text = "Your record"
+horizontal_alignment = 1
+
+[node name="EndedRecordLabel" type="Label" parent="CanvasLayer/Control/EndedPanel/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=38459976]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_iywne")
+text = "0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/Control/EndedPanel/VBoxContainer/HBoxContainer" unique_id=24469702]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/EndedPanel/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1509195174]
+layout_mode = 2
+text = "Last Record"
+horizontal_alignment = 1
+
+[node name="EndedLastRecordLabel" type="Label" parent="CanvasLayer/Control/EndedPanel/VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1056893662]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("3_iywne")
+text = "0"
+horizontal_alignment = 1
+
+[node name="TryAgainButton" type="Button" parent="CanvasLayer/Control/EndedPanel/VBoxContainer" unique_id=1518963129]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Try again?"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Control/EndedPanel/VBoxContainer" unique_id=707316466]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="Player" parent="." unique_id=1479385599 instance=ExtResource("1_uwrxv")]
+unique_name_in_owner = true
+position = Vector2(107, 180)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=390216505]
+unique_name_in_owner = true
+position = Vector2(212, 0)
+limit_left = 0
+limit_top = 0
+limit_right = 10000322
+limit_bottom = 360
+
+[node name="Ground" parent="." unique_id=1416503084 instance=ExtResource("3_lnu2h")]
+position = Vector2(182, 358)
+collision_layer = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=236734571]
+unique_name_in_owner = true
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=2039239752]
+unique_name_in_owner = true
+stream = ExtResource("8_gee14")
+volume_db = -80.0
+autoplay = true
+parameters/looping = true
+
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="pressed" from="CanvasLayer/Control/MuteButton" to="." method="_on_mute_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/ReloadButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/EndedPanel/VBoxContainer/TryAgainButton" to="." method="_on_try_again_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/EndedPanel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

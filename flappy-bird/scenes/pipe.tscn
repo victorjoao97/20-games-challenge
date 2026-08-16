@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dlj7j2vkfwcu4"]
+
+[ext_resource type="Script" uid="uid://cwkq6ave8bqtj" path="res://scripts/pipe.gd" id="1_8x3ej"]
+
+[sub_resource type="Gradient" id="Gradient_8x3ej"]
+offsets = PackedFloat32Array(0.07840237, 0.27366865)
+colors = PackedColorArray(1, 1, 1, 1, 0.22312239, 0.71574646, 0.12288649, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1xwnf"]
+gradient = SubResource("Gradient_8x3ej")
+width = 45
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
+size = Vector2(45.2, 360)
+
+[node name="Pipe" type="Area2D" unique_id=126351892]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_8x3ej")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1956814539]
+position = Vector2(0, 1.0000076)
+scale = Vector2(1, 360)
+texture = SubResource("GradientTexture1D_1xwnf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=644504032]
+visible = false
+shape = SubResource("RectangleShape2D_iywne")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bkiw27bj8lqls"]
+
+[ext_resource type="Script" uid="uid://dxjjyd35ggrev" path="res://scenes/ground.gd" id="1_pybca"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1xwnf"]
+
+[node name="Ground" type="Area2D" unique_id=1416503084]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_pybca")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=556649574]
+light_mask = 0
+shape = SubResource("WorldBoundaryShape2D_1xwnf")
+debug_color = Color(0.91723406, 0.24851224, 0.37474087, 0.41960785)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

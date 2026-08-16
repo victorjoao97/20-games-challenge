@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d3uac7wjorfa8"]
+
+[ext_resource type="Script" uid="uid://vte345c64pne" path="res://scripts/pipes.gd" id="1_3ahhd"]
+[ext_resource type="PackedScene" uid="uid://dlj7j2vkfwcu4" path="res://scenes/pipe.tscn" id="1_f17p0"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3ahhd"]
+a = Vector2(0, 360)
+b = Vector2(0, 0)
+
+[node name="Pipes" type="Node2D" unique_id=2069789557]
+script = ExtResource("1_3ahhd")
+
+[node name="Pipe1" parent="." unique_id=37524545 instance=ExtResource("1_f17p0")]
+unique_name_in_owner = true
+
+[node name="Pipe2" parent="." unique_id=1169966620 instance=ExtResource("1_f17p0")]
+unique_name_in_owner = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=682016820]
+position = Vector2(2, -1)
+rect = Rect2(-51, -10, 100, 20)
+
+[node name="Checkpoint" type="Area2D" parent="." unique_id=1694630784]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape2D" parent="Checkpoint" unique_id=736378768]
+position = Vector2(51, 0)
+shape = SubResource("SegmentShape2D_3ahhd")
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="body_entered" from="Checkpoint" to="." method="_on_checkpoint_body_entered"]

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bbkwi8g1lv4g5"]
+
+[ext_resource type="Script" uid="uid://dr12n7s0ip2vg" path="res://scripts/game.gd" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://b8nimb5anw8sy" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://cjlknryoeg686" path="res://assets/backgrounds/BGT3ik.jpg" id="2_iywne"]
+[ext_resource type="PackedScene" uid="uid://bkiw27bj8lqls" path="res://scenes/ground.tscn" id="3_lnu2h"]
+
+[node name="Game" type="Node2D" unique_id=153097584]
+script = ExtResource("1_lbhrr")
+debug = true
+disable_camera = null
+distance_min = 300
+distance_max = null
+started_from_x = 300
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2016421707]
+layer = -1
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1207358775]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control" unique_id=347758679]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_iywne")
+
+[node name="Button" type="Button" parent="CanvasLayer/Control" unique_id=469522036]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = -33.0
+offset_right = 64.0
+offset_bottom = -2.0
+grow_vertical = 0
+text = "Reload"
+
+[node name="RecordLabel" type="Label" parent="CanvasLayer/Control" unique_id=551068639]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 73.0
+offset_bottom = 29.0
+text = "Record: 0"
+
+[node name="Player" parent="." unique_id=1479385599 instance=ExtResource("1_uwrxv")]
+unique_name_in_owner = true
+position = Vector2(56, 87)
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=390216505]
+unique_name_in_owner = true
+limit_left = 0
+limit_top = 0
+limit_bottom = 360
+
+[node name="Ground" parent="." unique_id=1416503084 instance=ExtResource("3_lnu2h")]
+position = Vector2(182, 358)
+collision_layer = 1
+
+[connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
+[connection signal="pressed" from="CanvasLayer/Control/Button" to="." method="_on_button_pressed"]
