@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bn8mswg8xfe1o"]
+
+[ext_resource type="TileSet" uid="uid://cm4atkkbu4a32" path="res://resources/tileset-rpg.tres" id="1_4xfga"]
+[ext_resource type="Texture2D" uid="uid://dw24357whwdc0" path="res://assets/kenney_rollingBallAssets/PNG/Default/background_green.png" id="2_paxxb"]
+[ext_resource type="Texture2D" uid="uid://c32n24jntmc6y" path="res://assets/kenney_rollingBallAssets/PNG/Default/background_blue.png" id="3_gldc4"]
+
+[node name="Map" type="Node2D" unique_id=1449137408]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1704456316]
+visible = false
+tile_set = ExtResource("1_4xfga")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=367269636]
+visible = false
+scale = Vector2(4.9375, 5.015625)
+texture = ExtResource("2_paxxb")
+centered = false
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1016225995]
+offset_right = 450.0
+offset_bottom = 800.0
+texture = ExtResource("3_gldc4")
+stretch_mode = 1

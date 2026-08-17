@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bwthlo64pi2gx"]
+
+[ext_resource type="Texture2D" uid="uid://dnhrwawk2if3s" path="res://assets/kenney_rollingBallAssets/PNG/Default/ball_red_large.png" id="1_7s4qf"]
+[ext_resource type="Script" uid="uid://dp2bl3fl25gxq" path="res://scripts/ball.gd" id="1_cxlvu"]
+[ext_resource type="Script" uid="uid://cnl7u2cjw6qae" path="res://scripts/state_machines/state_machine.gd" id="3_4dx81"]
+[ext_resource type="Script" uid="uid://dlf4uci25a7ya" path="res://scripts/states/ball_move_state.gd" id="4_eew57"]
+[ext_resource type="Script" uid="uid://dw3l2cscb5464" path="res://scripts/components/movement_component.gd" id="5_eew57"]
+[ext_resource type="Script" uid="uid://dms410dvc82qg" path="res://scripts/states/ball_die_state.gd" id="5_jj7gd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1xwnf"]
+radius = 20.0
+
+[node name="Ball" type="CharacterBody2D" unique_id=234891505]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_cxlvu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=937174324]
+position = Vector2(-9.536743e-07, -9.536743e-07)
+scale = Vector2(0.65625, 0.65625)
+texture = ExtResource("1_7s4qf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=833028879]
+shape = SubResource("CircleShape2D_1xwnf")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1693917437 node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
+script = ExtResource("3_4dx81")
+initial_state = NodePath("Move")
+metadata/_custom_type_script = "uid://cnl7u2cjw6qae"
+
+[node name="Move" type="Node" parent="StateMachine" unique_id=2081829808 node_paths=PackedStringArray("movement_component")]
+script = ExtResource("4_eew57")
+movement_component = NodePath("../../MovementComponent")
+metadata/_custom_type_script = "uid://dqq8emy47w4fn"
+
+[node name="Dead" type="Node" parent="StateMachine" unique_id=1512914809]
+script = ExtResource("5_jj7gd")
+metadata/_custom_type_script = "uid://dqq8emy47w4fn"
+
+[node name="MovementComponent" type="Node" parent="." unique_id=607380197 node_paths=PackedStringArray("body", "model")]
+script = ExtResource("5_eew57")
+body = NodePath("..")
+model = NodePath("../Sprite2D")
+metadata/_custom_type_script = "uid://dw3l2cscb5464"

@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://disc1xer5wdd3"]
+
+[ext_resource type="Script" uid="uid://dgkpv6ae7w43s" path="res://scripts/game.gd" id="1_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bdy6eolr4pi1t" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://bn8mswg8xfe1o" path="res://scenes/map.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bwthlo64pi2gx" path="res://scenes/ball.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://cnl7u2cjw6qae" path="res://scripts/state_machines/state_machine.gd" id="5_u5sy4"]
+[ext_resource type="Script" uid="uid://oxwm8i6oqb5k" path="res://scripts/states/game/playing_state.gd" id="6_gee14"]
+[ext_resource type="Script" uid="uid://wdnq2hooxq6l" path="res://scripts/states/game/pause_state.gd" id="7_vtaks"]
+[ext_resource type="Script" uid="uid://drce3lkoauy2j" path="res://scripts/states/game/game_over_state.gd" id="8_0tnpc"]
+[ext_resource type="Script" uid="uid://clg8n4b3idvfr" path="res://scripts/states/game/try_again_state.gd" id="8_vtaks"]
+[ext_resource type="Script" uid="uid://c3fl3vn8p10c4" path="res://scripts/components/input_component.gd" id="9_kvpfn"]
+
+[sub_resource type="Theme" id="Theme_0tnpc"]
+Label/font_sizes/font_size = 30
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1xwnf"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lnu2h"]
+normal = Vector2(0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smehm"]
+size = Vector2(598, 10)
+
+[node name="Game" type="Node2D" unique_id=762031325]
+script = ExtResource("1_lbhrr")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1641772164]
+
+[node name="Instructions" type="Label" parent="CanvasLayer" unique_id=359679646]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.5
+offset_top = -11.5
+offset_right = 78.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_0tnpc")
+text = "Instructions"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Label" parent="CanvasLayer" unique_id=1534591242]
+unique_name_in_owner = true
+offset_right = 157.0
+offset_bottom = 42.0
+theme = SubResource("Theme_0tnpc")
+text = "Health"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Map" parent="." unique_id=1449137408 instance=ExtResource("1_yqjtg")]
+
+[node name="Boundaries" type="StaticBody2D" parent="." unique_id=507545354]
+collision_layer = 2
+collision_mask = 9
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundaries" unique_id=1998456165]
+position = Vector2(1, 0)
+shape = SubResource("WorldBoundaryShape2D_1xwnf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundaries" unique_id=364874132]
+position = Vector2(447, 0)
+shape = SubResource("WorldBoundaryShape2D_uwrxv")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundaries" unique_id=1173259305]
+position = Vector2(216, 0)
+shape = SubResource("WorldBoundaryShape2D_lnu2h")
+
+[node name="Player" parent="." unique_id=1608997011 instance=ExtResource("1_uwrxv")]
+unique_name_in_owner = true
+position = Vector2(225, 756)
+
+[node name="Ball" parent="." unique_id=1219554658 instance=ExtResource("3_lnu2h")]
+unique_name_in_owner = true
+position = Vector2(225, 717)
+
+[node name="Killzone" type="Area2D" parent="." unique_id=1091512182]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=353047496]
+position = Vector2(227, 848)
+shape = SubResource("RectangleShape2D_smehm")
+
+[node name="StateMachine" type="Node" parent="." unique_id=766667265 node_paths=PackedStringArray("initial_state")]
+unique_name_in_owner = true
+script = ExtResource("5_u5sy4")
+initial_state = NodePath("PauseState")
+metadata/_custom_type_script = "uid://cnl7u2cjw6qae"
+
+[node name="PauseState" type="Node" parent="StateMachine" unique_id=1232056641 node_paths=PackedStringArray("playing_state")]
+script = ExtResource("7_vtaks")
+playing_state = NodePath("../PlayingState")
+metadata/_custom_type_script = "uid://dqq8emy47w4fn"
+
+[node name="PlayingState" type="Node" parent="StateMachine" unique_id=2063809932 node_paths=PackedStringArray("try_again_state")]
+script = ExtResource("6_gee14")
+try_again_state = NodePath("../TryAgainState")
+metadata/_custom_type_script = "uid://dqq8emy47w4fn"
+
+[node name="TryAgainState" type="Node" parent="StateMachine" unique_id=1327098132 node_paths=PackedStringArray("pause_state", "game_over_state")]
+script = ExtResource("8_vtaks")
+pause_state = NodePath("../PauseState")
+game_over_state = NodePath("../GameOverState")
+metadata/_custom_type_script = "uid://dqq8emy47w4fn"
+
+[node name="GameOverState" type="Node" parent="StateMachine" unique_id=157874386]
+script = ExtResource("8_0tnpc")
+metadata/_custom_type_script = "uid://dqq8emy47w4fn"
+
+[node name="InputComponent" type="Node" parent="." unique_id=1750283700]
+unique_name_in_owner = true
+script = ExtResource("9_kvpfn")
+metadata/_custom_type_script = "uid://c3fl3vn8p10c4"

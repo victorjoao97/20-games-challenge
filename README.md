@@ -17,6 +17,7 @@ Cada pasta na raiz será um jogo independente.
 /
 ├─ ping-pong/   # Jogo 01
 ├─ flappy-bird/   # Jogo 02
+├─ breakout/   # Jogo 03
 ├─ ...          # Próximos jogos
 ```
 
@@ -26,3 +27,4 @@ Cada pasta na raiz será um jogo independente.
 |---|------|--------|
 | 01 | Ping Pong | Feito |
 | 02 | Flappy Bird | Feito |
+| 03 | Breakout | Em andamento |
