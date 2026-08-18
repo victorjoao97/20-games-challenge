@@ -8,24 +8,23 @@
 [ext_resource type="Script" uid="uid://bfi8hdccuiv5t" path="res://scripts/states/ball/idle_state.gd" id="5_f7kxq"]
 [ext_resource type="Script" uid="uid://dms410dvc82qg" path="res://scripts/states/ball/ball_collision_state.gd" id="5_jj7gd"]
 [ext_resource type="Script" uid="uid://bw5ldgkyvtqeq" path="res://scripts/states/ball/boundaries_collision_state.gd" id="5_v8l5b"]
+[ext_resource type="Script" uid="uid://bmvcow00gnwwa" path="res://scripts/states/ball/brick_collision_state.gd" id="7_4m2kh"]
 [ext_resource type="Script" uid="uid://d11wekahr0xt7" path="res://scripts/components/collision_component.gd" id="7_fwo8l"]
-[ext_resource type="Script" uid="uid://bhsvtkks8rk4v" path="res://scripts/states/ball/die_state.gd" id="8_e8gir"]
-[ext_resource type="Script" uid="uid://ujpodmgmg21l" path="res://scripts/components/health_component.gd" id="9_iijjg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8l5b"]
-radius = 22.0
+radius = 12.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1xwnf"]
-radius = 20.0
+radius = 11.0
 
 [node name="Ball" type="CharacterBody2D" unique_id=234891505]
 collision_layer = 8
-collision_mask = 7
+collision_mask = 23
 script = ExtResource("1_cxlvu")
 
 [node name="Area2DKillZone" type="Area2D" parent="." unique_id=1569869806]
 collision_layer = 0
-collision_mask = 6
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DKillZone" unique_id=840142693]
 shape = SubResource("CircleShape2D_v8l5b")
@@ -37,13 +36,20 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DBoundaries" unique_id=623055059]
 shape = SubResource("CircleShape2D_v8l5b")
 
+[node name="Area2DBrick" type="Area2D" parent="." unique_id=568570441]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DBrick" unique_id=1954305249]
+shape = SubResource("CircleShape2D_v8l5b")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=833028879]
 shape = SubResource("CircleShape2D_1xwnf")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=937174324]
 unique_name_in_owner = true
 position = Vector2(-9.536743e-07, -9.536743e-07)
-scale = Vector2(0.65625, 0.65625)
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_7s4qf")
 
 [node name="StateMachine" type="Node" parent="." unique_id=1693917437 node_paths=PackedStringArray("initial_state")]
@@ -56,13 +62,15 @@ metadata/_custom_type_script = "uid://cnl7u2cjw6qae"
 script = ExtResource("5_f7kxq")
 metadata/_custom_type_script = "uid://dqq8emy47w4fn"
 
-[node name="MoveState" type="Node" parent="StateMachine" unique_id=2081829808 node_paths=PackedStringArray("movement_component", "collision_component", "collision_state", "boundaries_collision_component", "boundaries_collision_state")]
+[node name="MoveState" type="Node" parent="StateMachine" unique_id=2081829808 node_paths=PackedStringArray("movement_component", "collision_component", "collision_state", "boundaries_collision_component", "boundaries_collision_state", "brick_collision_component", "brick_collision_state")]
 script = ExtResource("4_eew57")
 movement_component = NodePath("../../MovementComponent")
 collision_component = NodePath("../../CollisionComponent")
 collision_state = NodePath("../CollisionState")
 boundaries_collision_component = NodePath("../../BoundariesCollisionComponent")
 boundaries_collision_state = NodePath("../BoundariesCollisionState")
+brick_collision_component = NodePath("../../BrickCollisionComponent")
+brick_collision_state = NodePath("../BrickCollisionState")
 metadata/_custom_type_script = "uid://dqq8emy47w4fn"
 
 [node name="BoundariesCollisionState" type="Node" parent="StateMachine" unique_id=934579414 node_paths=PackedStringArray("collision_state", "move_state")]
@@ -71,19 +79,20 @@ collision_state = NodePath("../CollisionState")
 move_state = NodePath("../MoveState")
 metadata/_custom_type_script = "uid://dqq8emy47w4fn"
 
-[node name="CollisionState" type="Node" parent="StateMachine" unique_id=1512914809 node_paths=PackedStringArray("move_state", "die_state")]
+[node name="BrickCollisionState" type="Node" parent="StateMachine" unique_id=2019264398 node_paths=PackedStringArray("move_state")]
+unique_name_in_owner = true
+script = ExtResource("7_4m2kh")
+move_state = NodePath("../MoveState")
+metadata/_custom_type_script = "uid://dqq8emy47w4fn"
+
+[node name="CollisionState" type="Node" parent="StateMachine" unique_id=1512914809 node_paths=PackedStringArray("move_state")]
 unique_name_in_owner = true
 script = ExtResource("5_jj7gd")
 move_state = NodePath("../MoveState")
-die_state = NodePath("../DieState")
-metadata/_custom_type_script = "uid://dqq8emy47w4fn"
-
-[node name="DieState" type="Node" parent="StateMachine" unique_id=548067127]
-unique_name_in_owner = true
-script = ExtResource("8_e8gir")
 metadata/_custom_type_script = "uid://dqq8emy47w4fn"
 
 [node name="MovementComponent" type="Node" parent="." unique_id=607380197 node_paths=PackedStringArray("body", "model")]
+unique_name_in_owner = true
 script = ExtResource("5_eew57")
 body = NodePath("..")
 model = NodePath("../Sprite2D")
@@ -99,8 +108,7 @@ script = ExtResource("7_fwo8l")
 area = NodePath("../Area2DBoundaries")
 metadata/_custom_type_script = "uid://d11wekahr0xt7"
 
-[node name="HealthComponent" type="Node" parent="." unique_id=2044957713]
-unique_name_in_owner = true
-script = ExtResource("9_iijjg")
-max_health = 3.0
-metadata/_custom_type_script = "uid://ujpodmgmg21l"
+[node name="BrickCollisionComponent" type="Node" parent="." unique_id=532959563 node_paths=PackedStringArray("area")]
+script = ExtResource("7_fwo8l")
+area = NodePath("../Area2DBrick")
+metadata/_custom_type_script = "uid://d11wekahr0xt7"

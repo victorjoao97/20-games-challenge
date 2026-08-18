@@ -49,6 +49,7 @@ enter={
 2d_physics/layer_2="wall"
 2d_physics/layer_3="killzone"
 2d_physics/layer_4="ball"
+2d_physics/layer_5="brick"
 
 [physics]
 

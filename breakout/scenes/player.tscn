@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://yo0k7u4qjnds" path="res://scripts/player.gd" id="1_tuyoq"]
 [ext_resource type="Script" uid="uid://cnl7u2cjw6qae" path="res://scripts/state_machines/state_machine.gd" id="2_dqkch"]
-[ext_resource type="TileSet" uid="uid://cm4atkkbu4a32" path="res://resources/tileset-rpg.tres" id="2_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://44dfpmjoed1p" path="res://assets/kenney_rollingBallAssets/PNG/Default/block_narrow.png" id="2_smehm"]
 [ext_resource type="Script" uid="uid://cfg7c4es25mjd" path="res://scripts/states/player/idle_state.gd" id="3_qlg0r"]
 [ext_resource type="Script" uid="uid://dvwnvthqiholi" path="res://scripts/states/player/move_state.gd" id="4_dqkch"]
@@ -10,8 +9,8 @@
 [ext_resource type="Script" uid="uid://dw3l2cscb5464" path="res://scripts/components/movement_component.gd" id="7_fjrip"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_smehm"]
-radius = 15.0
-height = 162.0
+radius = 16.0
+height = 164.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1608997011]
 collision_mask = 2
@@ -26,10 +25,6 @@ position = Vector2(0.23173618, 1.0129526e-08)
 rotation = 1.5707964
 scale = Vector2(1, 1.2715602)
 texture = ExtResource("2_smehm")
-
-[node name="TileMap" type="TileMapLayer" parent="." unique_id=691213893]
-visible = false
-tile_set = ExtResource("2_qhqgy")
 
 [node name="StateMachine" type="Node" parent="." unique_id=95814071 node_paths=PackedStringArray("initial_state")]
 unique_name_in_owner = true
@@ -55,10 +50,9 @@ unique_name_in_owner = true
 script = ExtResource("6_fjrip")
 metadata/_custom_type_script = "uid://c3fl3vn8p10c4"
 
-[node name="MovimentComponent" type="Node" parent="." unique_id=866556961 node_paths=PackedStringArray("body", "model")]
+[node name="MovimentComponent" type="Node" parent="." unique_id=866556961 node_paths=PackedStringArray("body")]
 unique_name_in_owner = true
 script = ExtResource("7_fjrip")
 body = NodePath("..")
-model = NodePath("../TileMap")
-speed = 200.0
+speed = 500.0
 metadata/_custom_type_script = "uid://dw3l2cscb5464"

@@ -12,15 +12,17 @@ func _ready() -> void:
 	original_scale = sprite_2d.scale
 
 func enter() -> void:
-	sprite_2d.texture = alternativa_texture
+	print("play some sound on hit boundary")
+	#sprite_2d.texture = alternativa_texture
+	pass
 
 func exit() -> void:
-	var tween = create_tween()
-	tween.tween_property(sprite_2d, "scale", Vector2(1, 1), 0.1)
-	await get_tree().create_timer(0.2).timeout
-	sprite_2d.texture = original_texture
-	sprite_2d.scale = original_scale
-	#switch_state.emit(move_state)
+	#var tween = create_tween()
+	#tween.tween_property(sprite_2d, "scale", Vector2(1, 1), 0.1)
+	#await get_tree().create_timer(0.2).timeout
+	#sprite_2d.texture = original_texture
+	#sprite_2d.scale = original_scale
+	pass
 
 func update(_delta) -> void:
 	switch_state.emit(move_state)

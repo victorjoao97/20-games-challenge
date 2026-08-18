@@ -1,4 +1,4 @@
-class_name BallIdleState extends State
+class_name PlayerIdleState extends State
 
 @export var input_component: InputComponent
 @export var move_state: State
