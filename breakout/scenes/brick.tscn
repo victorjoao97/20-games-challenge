@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://be6m7brci0ic2"]
+
+[ext_resource type="Texture2D" uid="uid://ccgsyiickayep" path="res://assets/kenney_rollingBallAssets/PNG/Default/block_small.png" id="1_5l4w1"]
+[ext_resource type="Script" uid="uid://cqkdk2yfhoyq1" path="res://scripts/brick.gd" id="1_x7yom"]
+[ext_resource type="Script" uid="uid://cnl7u2cjw6qae" path="res://scripts/state_machines/state_machine.gd" id="2_7mekc"]
+[ext_resource type="Script" uid="uid://wtsc0ph22ct" path="res://scripts/states/brick/idle_state.gd" id="3_c34n8"]
+[ext_resource type="Script" uid="uid://joqkcjrpsgc3" path="res://scripts/states/brick/damage_state.gd" id="4_c34n8"]
+[ext_resource type="Script" uid="uid://d11wekahr0xt7" path="res://scripts/components/collision_component.gd" id="5_ci8dj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e8gir"]
+size = Vector2(29, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7yom"]
+size = Vector2(30, 30)
+
+[node name="Brick" type="StaticBody2D" unique_id=2060553603]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_x7yom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=282451636]
+shape = SubResource("RectangleShape2D_e8gir")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1367967264]
+texture = ExtResource("1_5l4w1")
+
+[node name="StateMachine" type="Node" parent="." unique_id=69159224 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("2_7mekc")
+initial_state = NodePath("IdleState")
+metadata/_custom_type_script = "uid://cnl7u2cjw6qae"
+
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=2077144674 node_paths=PackedStringArray("damage_state")]
+script = ExtResource("3_c34n8")
+damage_state = NodePath("../DamageState")
+metadata/_custom_type_script = "uid://dqq8emy47w4fn"
+
+[node name="DamageState" type="Node" parent="StateMachine" unique_id=883497875 node_paths=PackedStringArray("body")]
+script = ExtResource("4_c34n8")
+body = NodePath("../..")
+metadata/_custom_type_script = "uid://dqq8emy47w4fn"
+
+[node name="CollisionComponent" type="Node" parent="." unique_id=587811705 node_paths=PackedStringArray("area")]
+unique_name_in_owner = true
+script = ExtResource("5_ci8dj")
+area = NodePath("../CollisionArea2D")
+metadata/_custom_type_script = "uid://d11wekahr0xt7"
+
+[node name="CollisionArea2D" type="Area2D" parent="." unique_id=822696156]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CollisionArea2D" unique_id=1187127606]
+shape = SubResource("RectangleShape2D_x7yom")

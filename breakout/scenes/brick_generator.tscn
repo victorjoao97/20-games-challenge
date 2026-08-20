@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://vac8lj06vsho"]
+
+[ext_resource type="Script" uid="uid://tyagy88qxcn5" path="res://scripts/brick_generator.gd" id="1_00co7"]
+[ext_resource type="PackedScene" uid="uid://be6m7brci0ic2" path="res://scenes/brick.tscn" id="2_ytf3y"]
+
+[node name="BrickGenerator" type="Node" unique_id=909834507]
+script = ExtResource("1_00co7")
+limit = Vector2(50, 50)
+end = Vector2(430, 400)
+scene = ExtResource("2_ytf3y")
+debug = true
+noise = 0.1
+
+[node name="LineEdit" type="LineEdit" parent="." unique_id=68759384]
+offset_left = 13.0
+offset_top = 737.0
+offset_right = 119.0
+offset_bottom = 768.0
+
+[node name="Label" type="Label" parent="." unique_id=330697488]
+offset_left = 13.0
+offset_top = 709.0
+offset_right = 57.0
+offset_bottom = 732.0
+text = "Noise"
+
+[node name="Button" type="Button" parent="." unique_id=1659876076]
+offset_left = 124.0
+offset_top = 736.0
+offset_right = 163.0
+offset_bottom = 767.0
+text = "Run"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
