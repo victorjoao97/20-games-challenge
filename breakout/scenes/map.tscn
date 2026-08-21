@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://bn8mswg8xfe1o"]
 
 [ext_resource type="TileSet" uid="uid://cm4atkkbu4a32" path="res://resources/tileset-rpg.tres" id="1_4xfga"]
-[ext_resource type="Texture2D" uid="uid://dw24357whwdc0" path="res://assets/kenney_rollingBallAssets/PNG/Default/background_green.png" id="2_paxxb"]
+[ext_resource type="Texture2D" uid="uid://bf4d7k0ysrs1e" path="res://assets/512x512 textures (3).png" id="3_0cso3"]
 [ext_resource type="Texture2D" uid="uid://c32n24jntmc6y" path="res://assets/kenney_rollingBallAssets/PNG/Default/background_blue.png" id="3_gldc4"]
+
+[sub_resource type="Gradient" id="Gradient_paxxb"]
+colors = PackedColorArray(0.0627451, 0.0627451, 0.09411765, 1, 0.0627451, 0.0627451, 0.09411765, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m13ap"]
+gradient = SubResource("Gradient_paxxb")
 
 [node name="Map" type="Node2D" unique_id=1449137408]
 
@@ -11,13 +17,19 @@ visible = false
 tile_set = ExtResource("1_4xfga")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=367269636]
-visible = false
-scale = Vector2(4.9375, 5.015625)
-texture = ExtResource("2_paxxb")
+scale = Vector2(1.7656249, 798)
+texture = SubResource("GradientTexture1D_m13ap")
 centered = false
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1016225995]
+visible = false
 offset_right = 450.0
 offset_bottom = 800.0
 texture = ExtResource("3_gldc4")
 stretch_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=58144707]
+visible = false
+position = Vector2(239, 319)
+energy = 3.39
+texture = ExtResource("3_0cso3")

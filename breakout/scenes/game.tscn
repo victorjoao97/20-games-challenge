@@ -186,3 +186,6 @@ theme = SubResource("Theme_0tnpc")
 text = "Score"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1703201509]
+color = Color(0, 0, 0, 1)

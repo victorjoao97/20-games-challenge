@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dvwnvthqiholi" path="res://scripts/states/player/move_state.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://c3fl3vn8p10c4" path="res://scripts/components/input_component.gd" id="6_fjrip"]
 [ext_resource type="Script" uid="uid://dw3l2cscb5464" path="res://scripts/components/movement_component.gd" id="7_fjrip"]
+[ext_resource type="Texture2D" uid="uid://d4k7b145hy10d" path="res://assets/32x32 textures (52).png" id="8_smehm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_smehm"]
 radius = 16.0
@@ -56,3 +57,8 @@ script = ExtResource("7_fjrip")
 body = NodePath("..")
 speed = 500.0
 metadata/_custom_type_script = "uid://dw3l2cscb5464"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1566104938]
+position = Vector2(0, -1)
+texture = ExtResource("8_smehm")
+texture_scale = 10.07

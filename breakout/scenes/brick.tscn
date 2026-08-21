@@ -6,12 +6,66 @@
 [ext_resource type="Script" uid="uid://wtsc0ph22ct" path="res://scripts/states/brick/idle_state.gd" id="3_c34n8"]
 [ext_resource type="Script" uid="uid://joqkcjrpsgc3" path="res://scripts/states/brick/damage_state.gd" id="4_c34n8"]
 [ext_resource type="Script" uid="uid://d11wekahr0xt7" path="res://scripts/components/collision_component.gd" id="5_ci8dj"]
+[ext_resource type="Texture2D" uid="uid://bf4d7k0ysrs1e" path="res://assets/512x512 textures (3).png" id="7_d02mp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8gir"]
 size = Vector2(29, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7yom"]
 size = Vector2(30, 30)
+
+[sub_resource type="Animation" id="Animation_x7yom"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d02mp"]
+resource_name = "hide"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0009999999, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tj0p1"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tj0p1"]
+_data = {
+&"RESET": SubResource("Animation_x7yom"),
+&"hide": SubResource("Animation_d02mp"),
+&"show": SubResource("Animation_tj0p1")
+}
 
 [node name="Brick" type="StaticBody2D" unique_id=2060553603]
 collision_layer = 16
@@ -22,6 +76,7 @@ script = ExtResource("1_x7yom")
 shape = SubResource("RectangleShape2D_e8gir")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1367967264]
+modulate = Color(1, 1, 1, 0)
 texture = ExtResource("1_5l4w1")
 
 [node name="StateMachine" type="Node" parent="." unique_id=69159224 node_paths=PackedStringArray("initial_state")]
@@ -34,9 +89,10 @@ script = ExtResource("3_c34n8")
 damage_state = NodePath("../DamageState")
 metadata/_custom_type_script = "uid://dqq8emy47w4fn"
 
-[node name="DamageState" type="Node" parent="StateMachine" unique_id=883497875 node_paths=PackedStringArray("body")]
+[node name="DamageState" type="Node" parent="StateMachine" unique_id=883497875 node_paths=PackedStringArray("body", "collision_area")]
 script = ExtResource("4_c34n8")
 body = NodePath("../..")
+collision_area = NodePath("../../CollisionArea2D")
 metadata/_custom_type_script = "uid://dqq8emy47w4fn"
 
 [node name="CollisionComponent" type="Node" parent="." unique_id=587811705 node_paths=PackedStringArray("area")]
@@ -51,3 +107,11 @@ collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CollisionArea2D" unique_id=1187127606]
 shape = SubResource("RectangleShape2D_x7yom")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1914349151]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_tj0p1")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1593662115]
+unique_name_in_owner = true
+texture = ExtResource("7_d02mp")
