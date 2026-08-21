@@ -27,9 +27,12 @@ func enter() -> void:
 	player.global_position = original_player_position
 	ball.global_position = original_ball_position
 	ball.start(BALL_SPEED)
+	ball.show()
 	display_score()
+	print("Start level: %d Bricks: %d" % [game_state.current_level, game_state.number_bricks])
 
 func exit() -> void:
+	game_state.reset()
 	ball.stop()
 	ball.collision.disconnect(_on_collision)
 	ball.brick_collected.disconnect(_on_brick_collected)
@@ -39,11 +42,12 @@ func _on_collision() -> void:
 	switch_state.emit(try_again_state)
 
 func _on_brick_collected() -> void:
+	print("Collected")
 	a += 1
 	game_state.increment_score()
 	display_score()
 
-	if game_state.player_score >= game_state.number_bricks:
+	if game_state.collected_bricks >= game_state.number_bricks:
 		switch_state.emit(next_level)
 		return
 

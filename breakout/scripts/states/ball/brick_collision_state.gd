@@ -5,6 +5,6 @@ class_name BrickCollisionState extends State
 signal brick_damage
 
 func enter() -> void:
-	print("touch a brick")
+	#print("touch a brick")
 	brick_damage.emit()
 	switch_state.emit(move_state)

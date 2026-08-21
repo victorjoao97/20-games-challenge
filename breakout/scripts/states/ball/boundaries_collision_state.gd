@@ -12,7 +12,7 @@ func _ready() -> void:
 	original_scale = sprite_2d.scale
 
 func enter() -> void:
-	print("play some sound on hit boundary")
+	#print("play some sound on hit boundary")
 	#sprite_2d.texture = alternativa_texture
 	pass
 

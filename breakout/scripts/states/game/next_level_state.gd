@@ -2,6 +2,7 @@ class_name NextLevelState extends State
 
 @export var generate_bricks_state: State
 @export var finish_state: State
+@export var pause_state: State
 
 @onready var instructions: Label = %Instructions
 @onready var level_label: Label = %LevelLabel
@@ -14,22 +15,15 @@ func _ready() -> void:
 	add_child(dialog)
 	dialog.confirmed.connect(_on_next_level)
 	dialog.canceled.connect(func() -> void: switch_state.emit(finish_state))
-	display_level()
-
-func display_level() -> void:
-	level_label.text = "Level: %d" % game_state.current_level
 
 func _on_next_level() -> void:
 	game_state.current_level += 1
-	display_level()
-	switch_state.emit(generate_bricks_state)
+	switch_state.emit(pause_state)
 
 func exit() -> void:
 	instructions.hide()
 
 func enter() -> void:
-	game_state.reset()
-
 	instructions.text = "You rock!"
 	instructions.show()
 
@@ -37,3 +31,5 @@ func enter() -> void:
 	
 	dialog.dialog_text = "Next level?"
 	dialog.popup_centered()
+	
+	game_state.save_state()

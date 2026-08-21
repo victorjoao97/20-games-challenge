@@ -14,7 +14,7 @@ func enter() -> void:
 	noise_threshold = max(noise_threshold, min_noise)
 	brick_generator.noise = noise_threshold
 	brick_generator.frequency = 0.05 + step * 0.01
-	brick_generator.seed_number = game_state.current_level
+	#brick_generator.seed_number = game_state.current_level
 	brick_generator.generate()
 	
 	game_state.number_bricks = brick_generator.total_children

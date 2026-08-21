@@ -19,6 +19,6 @@ func enter() -> void:
 	animation_player.play("hide")
 	await animation_player.animation_finished
 	
-	var tween2 = create_tween()
-	tween2.tween_property(point_light_2d, "texture_scale", 0, 0.5)
+	#var tween2 = create_tween()
+	#tween2.tween_property(point_light_2d, "texture_scale", 0, 0.5)
 	body.queue_free.call_deferred()
