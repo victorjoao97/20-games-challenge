@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://bw5ldgkyvtqeq" path="res://scripts/states/ball/boundaries_collision_state.gd" id="5_v8l5b"]
 [ext_resource type="Script" uid="uid://bmvcow00gnwwa" path="res://scripts/states/ball/brick_collision_state.gd" id="7_4m2kh"]
 [ext_resource type="Script" uid="uid://d11wekahr0xt7" path="res://scripts/components/collision_component.gd" id="7_fwo8l"]
-[ext_resource type="Texture2D" uid="uid://bd4qus3mv7v3j" path="res://assets/128x128 textures (4).png" id="11_e8gir"]
+[ext_resource type="Texture2D" uid="uid://d4k7b145hy10d" path="res://assets/32x32 textures (52).png" id="11_e8gir"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v8l5b"]
 radius = 12.0
@@ -116,3 +116,4 @@ metadata/_custom_type_script = "uid://d11wekahr0xt7"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=850724932]
 texture = ExtResource("11_e8gir")
+texture_scale = 4.0

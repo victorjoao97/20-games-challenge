@@ -97,7 +97,7 @@ metadata/_custom_type_script = "uid://dqq8emy47w4fn"
 
 [node name="TryAgainState" type="Node" parent="StateMachine" unique_id=1327098132 node_paths=PackedStringArray("playing_state", "game_over_state", "health_component")]
 script = ExtResource("8_vtaks")
-playing_state = NodePath("../PlayingState")
+playing_state = NodePath("../GenerateBricksState")
 game_over_state = NodePath("../GameOverState")
 health_component = NodePath("../../HealthComponent")
 metadata/_custom_type_script = "uid://dqq8emy47w4fn"

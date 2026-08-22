@@ -22,6 +22,7 @@ func _ready() -> void:
 	original_player_position = player.global_position
 
 func enter() -> void:
+	a = 0
 	ball.collision.connect(_on_collision)
 	ball.brick_collected.connect(_on_brick_collected)
 	player.global_position = original_player_position
@@ -38,7 +39,6 @@ func exit() -> void:
 	ball.brick_collected.disconnect(_on_brick_collected)
 
 func _on_collision() -> void:
-	a = 0
 	switch_state.emit(try_again_state)
 
 func _on_brick_collected() -> void:

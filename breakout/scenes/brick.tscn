@@ -6,7 +6,13 @@
 [ext_resource type="Script" uid="uid://wtsc0ph22ct" path="res://scripts/states/brick/idle_state.gd" id="3_c34n8"]
 [ext_resource type="Script" uid="uid://joqkcjrpsgc3" path="res://scripts/states/brick/damage_state.gd" id="4_c34n8"]
 [ext_resource type="Script" uid="uid://d11wekahr0xt7" path="res://scripts/components/collision_component.gd" id="5_ci8dj"]
-[ext_resource type="Texture2D" uid="uid://bf4d7k0ysrs1e" path="res://assets/512x512 textures (3).png" id="7_d02mp"]
+[ext_resource type="Texture2D" uid="uid://d4k7b145hy10d" path="res://assets/32x32 textures (52).png" id="7_d02mp"]
+
+[sub_resource type="Gradient" id="Gradient_d02mp"]
+offsets = PackedFloat32Array(0.99759614, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1xwnf"]
+gradient = SubResource("Gradient_d02mp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e8gir"]
 size = Vector2(29, 29)
@@ -72,6 +78,14 @@ collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_x7yom")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1528728968]
+visible = false
+offset_left = -30.0
+offset_top = -17.0
+offset_right = 226.0
+offset_bottom = 23.0
+texture = SubResource("GradientTexture1D_1xwnf")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=282451636]
 shape = SubResource("RectangleShape2D_e8gir")
 
@@ -115,3 +129,4 @@ libraries/ = SubResource("AnimationLibrary_tj0p1")
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1593662115]
 unique_name_in_owner = true
 texture = ExtResource("7_d02mp")
+texture_scale = 4.0

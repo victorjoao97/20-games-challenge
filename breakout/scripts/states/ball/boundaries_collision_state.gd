@@ -17,11 +17,11 @@ func enter() -> void:
 	pass
 
 func exit() -> void:
-	#var tween = create_tween()
-	#tween.tween_property(sprite_2d, "scale", Vector2(1, 1), 0.1)
-	#await get_tree().create_timer(0.2).timeout
+	var tween = create_tween()
+	tween.tween_property(sprite_2d, "scale", original_scale * 0.7, 0.1)
+	await get_tree().create_timer(0.2).timeout
 	#sprite_2d.texture = original_texture
-	#sprite_2d.scale = original_scale
+	sprite_2d.scale = original_scale
 	pass
 
 func update(_delta) -> void:

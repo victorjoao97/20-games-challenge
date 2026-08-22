@@ -20,6 +20,8 @@ var record_score := 0
 func _ready() -> void:
 	_on_health_changed(health_component.health, health_component.max_health)
 	health_component.health_changed.connect(_on_health_changed)
+	current_level = 1
+	record_score = 0
 	load_state()
 
 func increment_score() -> void:

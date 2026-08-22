@@ -61,4 +61,4 @@ metadata/_custom_type_script = "uid://dw3l2cscb5464"
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1566104938]
 position = Vector2(0, -1)
 texture = ExtResource("8_smehm")
-texture_scale = 10.07
+texture_scale = 7.0
